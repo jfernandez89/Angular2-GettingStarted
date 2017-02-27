@@ -8,6 +8,7 @@ export class ProductListComponent {
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
+    showImage: boolean = false;
     products: any[] = [ //This array can contain any type
         {
         "productId": 1,
@@ -29,5 +30,14 @@ export class ProductListComponent {
             "starRating": 4.2,
             "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
         }
-    ]; 
+    ];
+
+    //Methods
+
+    /**
+     * Change the current status of showImage
+     */
+    toggleImage(): void {
+        this.showImage = !this.showImage;
+    } 
 }
