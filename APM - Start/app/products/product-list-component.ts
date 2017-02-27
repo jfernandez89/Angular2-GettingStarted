@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core'; //If we added the import previously, we can add another dependency typing a ,
 import { IProduct } from './product';
 
 @Component({
@@ -6,7 +6,7 @@ import { IProduct } from './product';
     templateUrl: 'app/products/product-list-component.html', //The route must be relative to the index.
     styleUrls: ['app/products/product-list-component.css']
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
     imageWidth: number = 50;
     imageMargin: number = 2;
@@ -42,5 +42,12 @@ export class ProductListComponent {
      */
     toggleImage(): void {
         this.showImage = !this.showImage;
-    } 
+    }
+
+    /**
+     * This is a obligatory method if we implement OnInit interface.
+     */
+    ngOnInit(): void{
+        console.log('In OnInit');
+    }
 }
