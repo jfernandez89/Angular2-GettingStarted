@@ -5,6 +5,7 @@ import { LOCALE_ID } from '@angular/core';
 
 import { AppComponent }  from './app.component';
 import { ProductListComponent } from './products/product-list-component';
+import { ProductFilterPipe } from './products/product-filter.pipe';
 
 @NgModule({
   providers: [{
@@ -18,7 +19,8 @@ import { ProductListComponent } from './products/product-list-component';
   ],
   declarations: [ 
     AppComponent,
-    ProductListComponent ], // Adds the ProductListComponent, the name must be equal to the name that we put in the component ts file. Replacing snake-case to camel-case */ 
+    ProductListComponent, 
+    ProductFilterPipe], // Adds the ProductListComponent, the name must be equal to the name that we put in the component ts file. Replacing snake-case to camel-case */ 
   bootstrap: [ AppComponent ] //Loads the AppComponent
 })
 export class AppModule { }
