@@ -19,13 +19,14 @@
     <!-- Configure SystemJS -->
     <script src="systemjs.config.js"></script>
     <script>
+      //Import the main module from ES5
       System.import('app').catch(function(err){ console.error(err); });
     </script>
 </head>
 
 <body>
-    <pm-app></pm-app>
-    Starter files
+    <!-- Loads the Component hosted in app.component.ts and puts a message during the load -->
+    <pm-app>Loading App...</pm-app>
 </body>
 
 </html>
