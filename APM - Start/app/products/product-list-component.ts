@@ -3,8 +3,9 @@ import { IProduct } from './product';
 
 @Component({
     selector: 'pm-products',
-    templateUrl: 'app/products/product-list-component.html', //The route must be relative to the index.
-    styleUrls: ['app/products/product-list-component.css']
+    moduleId: module.id, //Allows to put relative path in our components
+    templateUrl: 'product-list-component.html', //The route must be relative to the index.
+    styleUrls: ['product-list-component.css']
 })
 export class ProductListComponent implements OnInit {
     pageTitle: string = 'Product List';
