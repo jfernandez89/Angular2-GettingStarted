@@ -5,5 +5,5 @@ import { Component } from '@angular/core';
     templateUrl: 'app/products/product-list-component.html' //The route must be relative to the index
 })
 export class ProductListComponent {
-    productTitle: string;
+    pageTitle: string = 'Product List';
 }
