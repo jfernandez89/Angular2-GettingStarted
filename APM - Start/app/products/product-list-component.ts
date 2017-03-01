@@ -15,6 +15,7 @@ export class ProductListComponent implements OnInit {
     showImage: boolean = false;
     listFilter: string;
     products: IProduct[];
+    errorMessage: string;
 
     //Constructor
     constructor(private _productService: ProductService){
@@ -35,8 +36,10 @@ export class ProductListComponent implements OnInit {
      * It start when the component is initialized
      */
     ngOnInit(): void{
-        //Retrieves the list products from the service.
-        this.products = this._productService.getProducts();
+        //Retrieves the list products from the service, if we use a Observable we capture it with subscribe
+        this._productService.getProducts()
+            .subscribe(products => this.products = products,
+                error => this.errorMessage = <any>error);
     }
 
     /**
