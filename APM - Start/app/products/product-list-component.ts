@@ -3,7 +3,6 @@ import { IProduct } from './product';
 import { ProductService } from './product.service';
 
 @Component({
-    selector: 'pm-products',
     moduleId: module.id, //Allows to put relative path in our components
     templateUrl: 'product-list-component.html', //The route must be relative to the index.
     styleUrls: ['product-list-component.css']
@@ -38,7 +37,7 @@ export class ProductListComponent implements OnInit {
     ngOnInit(): void{
         //Retrieves the list products from the service, if we use a Observable we capture it with subscribe
         this._productService.getProducts()
-            .subscribe(products => this.products = products,
+            .subscribe(products => this.products = products, //Asign de recieve data (products) to this.products
                 error => this.errorMessage = <any>error);
     }
 
