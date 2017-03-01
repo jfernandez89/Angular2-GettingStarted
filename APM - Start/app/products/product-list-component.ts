@@ -51,4 +51,12 @@ export class ProductListComponent implements OnInit {
     ngOnInit(): void{
         console.log('In OnInit');
     }
+
+    /**
+     * This functions recives a message from a nested component (Star) when we click on a star
+     * Emit a message and this function get the message by the binding property done in the template
+     */
+    onRatingClicked(message: string): void{
+        this.pageTitle = 'Product List ' + message;
+    }
 }

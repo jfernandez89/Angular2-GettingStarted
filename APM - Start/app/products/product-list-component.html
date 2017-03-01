@@ -53,7 +53,12 @@
                     <td>{{ product.productCode | lowercase }}</td>
                     <td>{{ product.releaseDate }}</td>
                     <td>{{ product.price | currency:'EUR':true:'1.2-2'}}</td>
-                    <td>{{ product.starRating }}</td>
+                    <td>
+                        <!-- This property is binded to @Input decorator in starComponent -->
+                        <ai-star [rating]='product.starRating'
+                            (ratingClicked)='onRatingClicked($event)'></ai-star> 
+                            <!-- ratingClicked, This event is associate to the star attribute -->
+                    </td>
                 </tr>
             </tbody>
         </table>
