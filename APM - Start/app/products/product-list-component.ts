@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'; //If we added the import previously, we can add another dependency typing a ,
 import { IProduct } from './product';
+import { ProductService } from './product.service';
 
 @Component({
     selector: 'pm-products',
@@ -12,29 +13,13 @@ export class ProductListComponent implements OnInit {
     imageWidth: number = 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    listFilter: string = '';
-    products: IProduct[] = [ //This array can contain any type
-        {
-        "productId": 1,
-        "productName": "Leaf Rake",
-        "productCode": "GDN-0011",
-        "releaseDate": "March 19, 2016",
-        "description": "Leaf rake with 48-inch wooden handle.",
-        "price": 19.95,
-        "starRating": 3.2,
-        "imageUrl": "http://openclipart.org/image/300px/svg_to_png/26215/Anonymous_Leaf_Rake.png"
-        },
-        {
-            "productId": 2,
-            "productName": "Garden Cart",
-            "productCode": "GDN-0023",
-            "releaseDate": "March 18, 2016",
-            "description": "15 gallon capacity rolling garden cart",
-            "price": 32.99,
-            "starRating": 4.2,
-            "imageUrl": "http://openclipart.org/image/300px/svg_to_png/58471/garden_cart.png"
-        }
-    ];
+    listFilter: string;
+    products: IProduct[];
+
+    //Constructor
+    constructor(private _productService: ProductService){
+        //We use the private variable in this component to acces to the services functions.
+    }
 
     //Methods
 
@@ -47,9 +32,11 @@ export class ProductListComponent implements OnInit {
 
     /**
      * This is a obligatory method if we implement OnInit interface.
+     * It start when the component is initialized
      */
     ngOnInit(): void{
-        console.log('In OnInit');
+        //Retrieves the list products from the service.
+        this.products = this._productService.getProducts();
     }
 
     /**
