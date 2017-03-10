@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router'; //Import files
 import { AppComponent }  from './app.component';
 import { WelcomeComponent } from './home/welcome.component'; //Import files
 import { ProductListComponent } from './products/product-list-component';
+import { ProductDetailGuard } from './products/product-guard-service';
 import { ProductDetailComponent } from './products/product-detail.component'; //Import files
 import { ProductFilterPipe } from './products/product-filter.pipe';
 import { StarComponent } from './shared/star.component';
@@ -17,6 +18,7 @@ import { StarComponent } from './shared/star.component';
       provide: LOCALE_ID,
       useValue: 'es-ES' // 'de-DE' for Germany, 'fr-FR' for France ...
     },
+    ProductDetailGuard //Add the guard as a provider
   ],
   imports: [ 
     BrowserModule,
@@ -24,7 +26,11 @@ import { StarComponent } from './shared/star.component';
     HttpModule, //Needed to use the Http Service
     RouterModule.forRoot([ //Configure our navigation, most specific rout must stay in first place
       {path: 'products', component: ProductListComponent },
-      {path: 'product/:id', component: ProductDetailComponent },
+      {
+        path: 'product/:id', 
+        canActivate:[ProductDetailGuard], //Indicates which guard is asign to this route
+        component: ProductDetailComponent 
+      },
       {path: 'welcome', component: WelcomeComponent },
       {path: '', redirectTo: 'welcome', pathMatch: 'full' }, //Default route
       {path: '**', redirectTo: 'welcome', pathMatch: 'full' }, //Wildcard route, usually 404
